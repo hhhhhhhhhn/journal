@@ -1,0 +1,25 @@
+{
+  "name": "jrnl-js",
+  "version": "1.0.0",
+  "description": "A quick CLI journal",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oekshido/journal.git"
+  },
+  "author": "oekshido",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/oekshido/journal/issues"
+  },
+  "homepage": "https://github.com/oekshido/journal#readme",
+  "dependencies": {
+    "syncprompt": "^2.0.0"
+  },
+  "bin": {
+    "jrnl": "./main.js"
+  }
+}
