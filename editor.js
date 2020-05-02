@@ -2,16 +2,6 @@ const readline = require('readline');
 readline.emitKeypressEvents(process.stdin)
 process.stdin.setRawMode(true)
 
-class Prom{
-    constructor(){
-        this.promise = new Promise((res, rej)=> {
-            this.reject = rej
-            this.resolve = res
-        })
-    }
-}
-  
-
 class TextEdit{
     constructor(){
         this.writing = true
