@@ -1,6 +1,6 @@
 {
   "name": "jrnl-js",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "A quick CLI journal",
   "main": "main.js",
   "scripts": {
@@ -16,9 +16,7 @@
     "url": "https://github.com/oekshido/journal/issues"
   },
   "homepage": "https://github.com/oekshido/journal#readme",
-  "dependencies": {
-    "syncprompt": "^2.0.0"
-  },
+  "dependencies": {},
   "bin": {
     "jrnl": "./main.js"
   }
