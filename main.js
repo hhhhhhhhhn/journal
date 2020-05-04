@@ -37,11 +37,24 @@ function getDateString(){
 }
 
 async function main(){
-    if(!fs.existsSync(__dirname + "/file.txt") || process.argv.includes("set")){
-        fs.writeFileSync(__dirname + "/file.txt",
-        process.cwd() + "/" + await prompt("Select file to write to: "))
+    var journal = process.argv.slice(2).filter(arg => arg != "set")[0] || ""
+    var set = process.argv.includes("set")
+
+    if(!fs.existsSync(__dirname + "/files.json")){
+        fs.writeFileSync(__dirname + "/files.json", "{}")
     }
-    var file = fs.readFileSync(__dirname + "/file.txt", "utf8")
+    
+    var files = require("./files.json")
+
+    if(!files.hasOwnProperty(journal) || set){
+        var file = process.cwd()+"/"+await prompt("Select a file to write to: ")
+        files[journal] = file
+        fs.writeFileSync(__dirname + "/files.json", JSON.stringify(files))
+    }
+    else{
+        var file = files[journal]
+    }
+
     var input = await getText()
     
     var fileContents = fs.readFileSync(file, "utf8")
@@ -49,7 +62,7 @@ async function main(){
     if(!fileContents.includes(date)){
         fs.appendFileSync(file, `\n\n## ${date}`)
     }
-    fs.appendFileSync(file, "\n" + input)
+    fs.appendFileSync(file, "\n\n" + input)
     process.exit()
 }
 
