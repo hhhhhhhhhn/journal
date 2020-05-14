@@ -6,7 +6,8 @@ class TextEdit{
     constructor(){
         this.writing = true
         this.text = ""
-        this.cursor = 0        
+		this.cursor = 0
+		console.clear()      
     }
 
     stringToGridCoordenates(text, coord){
@@ -39,15 +40,9 @@ class TextEdit{
         return coord
     }
 
-    clear(y){
-        readline.moveCursor(process.stdout, 0, -y)
-        readline.cursorTo(process.stdout, 0)
-        process.stdout.clearScreenDown()
-    }
-
     render(){
         var [x, y] = this.stringToGridCoordenates(this.text, this.cursor)
-        this.clear(y)
+        console.clear()
         process.stdout.write(this.text)
         var [xMax, yMax] = this.stringToGridCoordenates(this.text, this.text.length)
         readline.moveCursor(process.stdout, x - xMax, y - yMax)
@@ -72,10 +67,7 @@ class TextEdit{
         process.stdin.on("keypress", async (str, key) => {
             if(key.name == "c" && key.ctrl) process.exit()
             else if(key.name == "x" && key.ctrl){
-                if(del){
-                    var [x, y] = this.stringToGridCoordenates(this.text, this.cursor)
-                    this.clear(y)
-                }
+                if(del) console.clear()
                 this.resolve(this.text)
                 process.stdin.removeAllListeners("keypress")
             }
